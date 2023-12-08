@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: wlog
+  name: wlog
+spec:
+  selector:
+    matchLabels:
+      app: wlog
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: wlog
+    spec:
+      containers:
+      - name: wlog
+        image: zhaojiew/wlog
+        imagePullPolicy: Always

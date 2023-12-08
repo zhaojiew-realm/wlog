@@ -21,3 +21,28 @@ curl -d '@log.txt' localhost:8108
 The program will log the request body and send the same body as the response.
 
 Check the console output and the response received from the server to see the logged request body.
+
+The k8s deployment manifest:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: wlog
+  name: wlog
+spec:
+  selector:
+    matchLabels:
+      app: wlog
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: wlog
+    spec:
+      containers:
+      - name: wlog
+        image: zhaojiew/wlog
+        imagePullPolicy: Always
+```
